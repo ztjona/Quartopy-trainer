@@ -27,7 +27,7 @@ import numpy as np
 # ---- PARAMS ----
 logger.info("Imports done.")
 
-EXPERIMENT_NAME = "BT_1"
+EXPERIMENT_NAME = "BT_2"
 CHECKPOINT_FOLDER = f"./CHECKPOINTS/{EXPERIMENT_NAME}/"
 
 BATCH_SIZE = 256
@@ -79,7 +79,7 @@ target_net = QuartoCNN()
 target_net.load_state_dict(policy_net.state_dict())
 
 CKPT_NAME_GEN = lambda epoch: f"{EXPERIMENT_NAME}_epoch_{epoch:04d}"
-_fcheckpoint_name = policy_net.export_model(CKPT_NAME_GEN(0))
+_fcheckpoint_name = policy_net.export_model(CKPT_NAME_GEN(0), CHECKPOINT_FOLDER)
 # list of file names by epoch
 checkpoints_files: list[str] = [_fcheckpoint_name]
 
